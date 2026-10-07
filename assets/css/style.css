@@ -1,0 +1,2990 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+/* ------------------------------------------------------------------
+   THEME TOKENS
+   - `:root`      = LIGHT mode (default)
+   - `[data-theme="dark"]` = DARK mode (slate nzito wa bluu)
+   Rangi ZOTE za mfumo zimetolewa kwenye hizi variables (hakuna
+   rangi ngamu kwenye rules) ili dark mode ibadilishe kila kitu.
+   ------------------------------------------------------------------ */
+@property --grad-a {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #d6d9dd;
+}
+@property --grad-b {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e9ebee;
+}
+@property --grad-c {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #f5f6f7;
+}
+
+:root {
+    /* msingi (za zamani — zimehifadhiwa) */
+    --primary: #6b7280;
+    --primary-dark: #4b5563;
+    --primary-light: #e5e7eb;
+    --primary-lighter: #f3f4f6;
+    --primary-mid: #9ca3af;
+    --danger: #d92d20;
+    --danger-dark: #a8221a;
+    --border: #d1d5db;
+    --text: #1f2937;
+    --bg: #e5e7eb;
+    --accent: #ffc857;
+    --accent-dark: #e0a72e;
+
+    /* Rangi ya spinner mpya (glowing star loader) */
+    --loader-color: #0B486B;
+
+    /* gradient ya background ya kurasa (ina-transition pole pole) */
+    --grad-a: #d6d9dd;
+    --grad-b: #e9ebee;
+    --grad-c: #f5f6f7;
+
+    /* surfaces */
+    --surface: rgba(255, 255, 255, 0.65);
+    --surface-solid: #ffffff;
+    --surface-alt: rgba(255, 255, 255, 0.95);
+    --surface-veil: rgba(255, 255, 255, 0.78);
+    --veil-grey: rgba(229, 231, 235, 0.72);
+    --shade: rgba(31, 41, 55, 0.45);
+    --banner-bg: rgba(255, 255, 255, 0.75);
+
+    /* mistari (borders) */
+    --line: rgba(0, 0, 0, 0.1);
+    --line-soft: rgba(0, 0, 0, 0.08);
+    --line-strong: rgba(0, 0, 0, 0.16);
+
+    /* maandishi */
+    --text-muted: #5b6270;   /* ilikuwa #6b7280 (4.05:1) — sasa >=4.5:1 kwenye background nyepesi */
+    --text-dim: #9ca3af;
+    --text-faint: rgba(31, 41, 55, 0.5);
+
+    /* navbar / hover */
+    --hover-bg: rgba(75, 85, 99, 0.08);
+    --hover-border: rgba(75, 85, 99, 0.12);
+    --pill-active: #4b5563;
+    --pill-active-hover: #374151;
+
+    /* tables */
+    --thead-bg: rgba(0, 0, 0, 0.05);
+    --zebra-bg: rgba(0, 0, 0, 0.02);
+    --stripe-bg: rgba(0, 0, 0, 0.03);
+    --track-bg: rgba(0, 0, 0, 0.04);
+    --scroll-thumb: #c3c7cd;
+
+    /* tints (chips / alerts / banners) */
+    --tint-danger-bg: #fee4e2;
+    --tint-danger-border: #f3b4ae;
+    --tint-danger-fg: #a8221a;
+    --tint-warn-bg: #fef3c7;
+    --tint-warn-border: #fbdba0;
+    --tint-warn-fg: #92400e;
+    --tint-gold-bg: #fff3d6;
+    --tint-orange-bg: #fff7ed;
+    --tint-orange-fg: #7c2d12;
+    --tint-info-bg: #eef2ff;
+    --tint-info-border: #c7d2fe;
+    --tint-info-fg: #3730a3;
+    --tint-ok-bg: #ecfdf5;
+    --tint-ok-border: #a7f3d0;
+    --tint-ok-fg: #047857;
+
+    /* semantic */
+    --success: #16a34a;
+    --success-strong: #15803d;
+    --warn-strong: #b45309;
+    --stat-accent-bg: rgba(255, 248, 230, 0.8);
+    --stat-accent-border: rgba(255, 200, 87, 0.55);
+
+    /* Background IMARA yenye maandishi meupe (buttons / pills zilizokaa) */
+    --solid: #4b5563;
+    --danger-solid: #a8221a;
+}
+
+/* ------------------------------------------------------------------
+   DARK MODE — slate nzito wa bluu (#0f172a family)
+   ------------------------------------------------------------------ */
+[data-theme="dark"] {
+    /* --primary    = background/border ya kati (maandishi meupe juu yake)
+       --primary-dark = RANGI YA MAANDISHI juu ya surface nyepesi (si background!) */
+    --primary: #64748b;
+    --primary-dark: #cbd5e1;
+    --primary-light: #1e293b;
+    --primary-lighter: #141d31;
+    --primary-mid: #64748b;
+    --danger: #dc2626;
+    --danger-dark: #fca5a5;
+    --border: #334155;
+    --text: #e2e8f0;
+    --bg: #0f172a;
+    --accent: #ffc857;
+    --accent-dark: #fbbf24;
+    --loader-color: #ffc857;   /* gold — inaangaza vizuri gizani */
+
+    --grad-a: #0b1220;
+    --grad-b: #0f172a;
+    --grad-c: #16213c;
+
+    --surface: rgba(30, 41, 59, 0.72);
+    --surface-solid: #1e293b;
+    --surface-alt: rgba(30, 41, 59, 0.96);
+    --surface-veil: rgba(15, 23, 42, 0.85);
+    --veil-grey: rgba(15, 23, 42, 0.72);
+    --shade: rgba(2, 6, 23, 0.7);
+    --banner-bg: rgba(30, 41, 59, 0.75);
+
+    --line: rgba(255, 255, 255, 0.12);
+    --line-soft: rgba(255, 255, 255, 0.08);
+    --line-strong: rgba(255, 255, 255, 0.2);
+
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+    --text-faint: rgba(226, 232, 240, 0.45);
+
+    --hover-bg: rgba(148, 163, 184, 0.14);
+    --hover-border: rgba(148, 163, 184, 0.22);
+    --pill-active: #334155;
+    --pill-active-hover: #3f4f6b;
+
+    --thead-bg: rgba(255, 255, 255, 0.05);
+    --zebra-bg: rgba(255, 255, 255, 0.03);
+    --stripe-bg: rgba(255, 255, 255, 0.04);
+    --track-bg: rgba(255, 255, 255, 0.05);
+    --scroll-thumb: #475569;
+
+    --tint-danger-bg: rgba(248, 113, 113, 0.14);
+    --tint-danger-border: rgba(248, 113, 113, 0.4);
+    --tint-danger-fg: #fca5a5;
+    --tint-warn-bg: rgba(251, 191, 36, 0.14);
+    --tint-warn-border: rgba(251, 191, 36, 0.4);
+    --tint-warn-fg: #fcd34d;
+    --tint-gold-bg: rgba(255, 200, 87, 0.13);
+    --tint-orange-bg: rgba(251, 146, 60, 0.13);
+    --tint-orange-fg: #fed7aa;
+    --tint-info-bg: rgba(129, 140, 248, 0.14);
+    --tint-info-border: rgba(129, 140, 248, 0.42);
+    --tint-info-fg: #c7d2fe;
+    --tint-ok-bg: rgba(74, 222, 128, 0.13);
+    --tint-ok-border: rgba(74, 222, 128, 0.4);
+    --tint-ok-fg: #86efac;
+
+    --success: #4ade80;
+    --success-strong: #4ade80;
+    --warn-strong: #fbbf24;
+    --stat-accent-bg: rgba(255, 200, 87, 0.1);
+    --stat-accent-border: rgba(255, 200, 87, 0.45);
+
+    --solid: #475569;
+    --danger-solid: #b91c1c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(160deg, var(--grad-a) 0%, var(--grad-b) 45%, var(--grad-c) 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    font-size: 17px;
+}
+
+p, li, small, td, th {
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+h1, h2, h3 {
+    line-height: 1.3;
+    color: var(--text);
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface-veil);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: var(--text);
+    /* Gutter sawa na .container (16px) ili navbar na content zipate ukingo mmoja */
+    padding: 11px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 1px solid var(--line-soft);
+    box-shadow: 0 6px 22px rgba(31, 41, 55, .08);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    min-width: 0;
+}
+
+.navbar-brand img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    flex: 0 0 38px;
+    filter: drop-shadow(0 4px 7px rgba(31, 41, 55, .18));
+}
+
+.navbar-brand span {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-left: auto;   /* kundi la nav + switch ya theme viwe upande wa kulia */
+}
+
+.nav-pill {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px !important;
+    margin: 0 !important;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text) !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-pill .nav-icon {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.nav-pill:hover {
+    opacity: 1 !important;
+    color: var(--primary-dark) !important;
+    background: var(--hover-bg);
+    border-color: var(--hover-border);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(31, 41, 55, 0.08);
+}
+
+.nav-pill:hover .nav-icon {
+    transform: scale(1.12) translateY(-1px);
+}
+
+.nav-pill.active {
+    background: var(--solid);
+    border-color: var(--solid);
+    color: #fff !important;
+    box-shadow: 0 4px 14px rgba(75, 85, 99, 0.28);
+}
+
+.nav-pill.active:hover {
+    background: var(--pill-active-hover);
+    border-color: var(--pill-active-hover);
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+
+.nav-chevron {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.22s ease;
+}
+
+.nav-logout {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px !important;
+    margin: 0 0 0 6px !important;
+    border: 1px solid rgba(217, 45, 32, 0.2);
+    border-radius: 999px;
+    background: rgba(217, 45, 32, 0.08);
+    color: var(--danger-dark, #a8221a) !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-logout .nav-icon {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.nav-logout:hover {
+    opacity: 1 !important;
+    background: var(--danger, #d92d20);
+    border-color: var(--danger, #d92d20);
+    color: #fff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(217, 45, 32, 0.3);
+}
+
+.nav-logout:hover .nav-icon {
+    transform: translateX(3px) scale(1.08);
+}
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 220px;
+    padding: 8px;
+    background: var(--surface-alt);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--line-soft);
+    border-radius: 14px;
+    box-shadow: 0 14px 36px rgba(31, 41, 55, 0.16);
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 120;
+    transform-origin: top left;
+    animation: navDropIn 0.18s ease both;
+}
+
+.nav-dropdown.open .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+    display: flex;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .nav-dropdown:hover .nav-dropdown-menu {
+        display: flex;
+    }
+    .nav-dropdown:hover .nav-chevron {
+        transform: rotate(180deg);
+    }
+}
+
+.nav-dropdown.open .nav-chevron {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-item {
+    display: flex !important;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 12px !important;
+    margin: 0 !important;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text) !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.nav-dropdown-item .nav-icon {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    color: var(--primary-dark);
+    transition: transform 0.22s ease;
+}
+
+.nav-dropdown-item:hover {
+    background: var(--primary-lighter, #f3f4f6);
+    color: var(--primary-dark) !important;
+    transform: translateX(3px);
+}
+
+.nav-dropdown-item:hover .nav-icon {
+    transform: scale(1.12);
+}
+
+.nav-dropdown-item.active {
+    background: var(--solid);
+    color: #fff !important;
+}
+
+.nav-dropdown-item.active .nav-icon {
+    color: #fff;
+}
+
+@keyframes navDropIn {
+    from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.container {
+    /* FULL WIDTH hadi ukingo wa body — hakuna space ya pembeni kwenye PC.
+       Inabaki gutter ndogo (16px) tu ili content isiguse ukingo wa dirisha.
+       Kurasa za login/register (.auth-box) bado zimejaa katikati — max-width
+       yao wenyewe (400px) + margin: 0 auto haikuguswa.
+       isolation: mzingo wake mwenyewe — gold (-1) inabaki NYUMA ya kadi,
+       si nyuma ya body/section ambazo zinaweza kuzuia mwanga. */
+    max-width: none;
+    margin: 30px auto;
+    padding: 0 16px;
+    isolation: isolate;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        top: 14px;
+    }
+    /* `top` (14px → 0) SI `transform`: transform ingezalisha stacking
+       context na kumwaga gold juu ya kadi. `top` ni offset tu.
+       NOTICE: `opacity` NDIYO huzaa stacking context wakati wa entrance —
+       kwa hiyo uso wa kadi (surface) hauko kwenye `background` ya .card
+       bali kwenye `::after` (z-index:-1) ambao hupangwa BAADA ya gold
+       (::before) → gold haiwezi kupita juu ya uso HATA wakati wa fade. */
+    to {
+        opacity: 1;
+        top: 0;
+    }
+}
+
+.card {
+    position: relative;   /* mzingo wa ::before (gold -1 inatoka NYUMA ya kadi) */
+    background: var(--surface);   /* semi-transparent — mwanga wa nyuma upite baridi */
+    /* Blur ya zamani IMEONDOKA: ilizalisha stacking context na kumwaga
+       gold juu ya kadi badala ya nyuma. Nyuma ya kadi ni background safi
+       ya page tu — hakuna tofauti ya kuonekana kwa kufuta blur. */
+    border: 1.5px solid var(--line-soft);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: var(--text);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, top 0.15s ease;
+    /* `backwards` SI `both`: `both` hufunga `top:0` (animation-fill) na
+       kushinda `top:-3px` ya hover (card haipandi tena). `backwards` = hali
+       ya kuanzia ipo wakati wa delay tu, baada ya kumaliza hakuna fill. */
+    animation: fadeInUp 0.5s ease backwards;
+}
+
+.room-grid .card:nth-child(1) { animation-delay: 0.05s; }
+.room-grid .card:nth-child(2) { animation-delay: 0.15s; }
+.room-grid .card:nth-child(3) { animation-delay: 0.25s; }
+.room-grid .card:nth-child(4) { animation-delay: 0.35s; }
+.room-grid .card:nth-child(5) { animation-delay: 0.45s; }
+
+.card h2, .card h3 {
+    color: var(--text);
+}
+
+.card:hover {
+    border-color: var(--line-strong);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+}
+
+.room-grid .card:hover {
+    border-color: var(--primary);
+    box-shadow: none;   /* mwanga wa white sasa uko ::after — JUU ya gold (gold nyuma) */
+    top: -3px;   /* inapanda kwa `top` SI `transform` — transform ingezalisha
+                    stacking context na kumwaga gold juu ya kadi wakati wa hover */
+}
+
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    align-items: start;
+    isolation: isolate;   /* mzingo wake — gold (-1) inabaki NYUMA ya kadi */
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 14px;             /* sawa na nav-pill (menu bar) */
+    border: 1px solid var(--primary);
+    border-radius: 999px;          /* PILL — muundo wa button za menu bar */
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;               /* sawa na nav-pill */
+    font-weight: 700;              /* BOLD (zamani 500) */
+    line-height: 1.4;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+                transform 0.2s ease, backdrop-filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    background: var(--solid);
+    border-color: var(--solid);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 4px 14px rgba(75, 85, 99, 0.35);
+    transform: translateY(-1px);   /* effect ya nav-pill */
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-danger {
+    background: var(--danger);
+    border-color: var(--danger);
+}
+
+.btn-danger:hover {
+    background: var(--danger-solid);
+    border-color: var(--danger-solid);
+    box-shadow: 0 4px 14px rgba(169, 34, 26, 0.35);
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.mrs-modal-overlay {
+    /* Nafasi ya nje inabadilika kulingana na ukubwa wa screen (dynamic) */
+    --modal-outer-y: clamp(8px, 3vh, 24px);
+    --modal-outer-x: clamp(8px, 3vw, 20px);
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    /*
+     * Tunatumia `align-items: flex-start` pamoja na `margin: auto` kwenye kadi
+     * (angalia .mrs-modal-card hapa chini). Mbinu hii:
+     *   - kadi ikiwa ndogo, inakaa katikati kawaida;
+     *   - kadi ikiwa ndefu kuliko screen, haikatwi juu chini bali inasogea
+     *     (inayojulikana kama "safe centering" — tatizo la kawaida la flexbox).
+     */
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;              /* mtetezi: kama kitu bado kitavuka, hapa ndio itasogeza */
+    overscroll-behavior: contain;  /* kuzuia scroll ya mwili nyuma ya modal */
+    padding: var(--modal-outer-y) var(--modal-outer-x);
+    background: var(--shade);
+    backdrop-filter: blur(8px);
+    animation: mrsModalFade .2s ease both;
+}
+.mrs-modal-card {
+    /* Kiwango cha ndani cha kadi — kimetumika tena kwenye footer ya fomu */
+    --modal-pad: clamp(16px, 3vh, 28px);
+    width: min(100%, 410px);
+    margin: auto;   /* inakatiza ikishuka chini — kadi haikatwi kamwe */
+    max-height: calc(100vh - (var(--modal-outer-y) * 2));
+    max-height: calc(100dvh - (var(--modal-outer-y) * 2)); /* msaada kwa simu (URL bar) */
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--modal-pad);
+    text-align: center;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--surface-alt);
+    box-shadow: 0 22px 60px rgba(31,41,55,.25);
+    animation: mrsModalUp .25s ease both;
+}
+.mrs-loading-overlay {
+    position:fixed;
+    inset:0;
+    z-index:1100;
+    display:grid;
+    place-items:center;
+    background: var(--veil-grey);
+    backdrop-filter:blur(8px);
+}
+/* KADI ILEO KABISA — hakuna box (border/background/radius/shadow),
+   maudhui tu (logo + spinner + maandishi) yanaelea juu ya blur layer */
+.mrs-loader-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    color: var(--text);
+}
+.mrs-loader-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 4px;
+    filter:drop-shadow(0 4px 8px rgba(31,41,55,.18));
+    animation:mrsLoaderLogoIn .45s ease both;
+}
+@keyframes mrsLoaderLogoIn {
+    from { opacity:0; transform:translateY(-8px) scale(.92); }
+    to { opacity:1; transform:translateY(0) scale(1); }
+}
+/* Maandishi yanayobadilika: #1 -> #2 -> #3 (kisha yanashikilia la mwisho)
+   Yanahamia kwa fade laini bila kuruka nafasi */
+.mrs-loader-card strong {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    min-height: 20px;
+    transition: opacity .3s ease, transform .3s ease;
+}
+.mrs-loader-card strong.is-out {
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+/* =====================================================================
+   SPINNER MPYA #2 — glowing ring loader (mask + repeating-conic)
+   Size: 100px KAMA ILIVYO (haijabadilika).
+   Rangi: --loader-color  (LIGHT #0B486B | DARK gold #ffc857)
+   HTML: <div class="loader"></div>
+   ===================================================================== */
+.loader {
+    height: 100px;              /* size ibaki vile vile — 100px */
+    aspect-ratio: 1;
+    padding: 10px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    position: relative;
+    mask: conic-gradient(#000 0 0) content-box exclude, conic-gradient(#000 0 0);
+    filter: blur(12px);
+}
+.loader:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-conic-gradient(#0000 0 5%, var(--loader-color), #0000 20% 50%);
+    animation: l2 1.5s linear infinite;
+}
+@keyframes l2 {
+    to { rotate: 1turn }
+}
+
+/* =====================================================================
+   GLOW (halo) NYUMA YA SPINNER — DARK MODE PEEKEE (gold #ffc857)
+   .loader iko ndani ya .loader-wrap ili halo isikatwe na mask ya
+   spinner (ring) — halo iko NYUMA (z-index:-1) na inapuliza kwa
+   mdundo wake (2s) — inaonekana kama jua linaloangaza gizani.
+   ===================================================================== */
+.loader-wrap {
+    position: relative;
+    display: grid;
+    place-items: center;
+    isolation: isolate;          /* -1 haipendi chini ya kadi */
+}
+.loader-wrap::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 195%;
+    height: 195%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle closest-side,
+        rgba(255, 200, 87, .65),
+        rgba(255, 200, 87, .28) 45%,
+        rgba(255, 200, 87, 0) 72%);
+    filter: blur(12px);
+    opacity: 0;                 /* LIGHT: hakuna glow */
+    transition: opacity .6s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+[data-theme="dark"] .loader-wrap::before {
+    opacity: 1;                 /* DARK: inaangaza */
+    animation: loaderHalo 2s ease-in-out infinite;   /* puliza = mdundo wa spinner */
+}
+@keyframes loaderHalo {
+    0%, 100% { opacity: .5;  transform: translate(-50%, -50%) scale(.92); }
+    50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.08); }
+}
+@media (prefers-reduced-motion: reduce) {
+    [data-theme="dark"] .loader-wrap::before { animation: none; opacity: .8; }
+}
+.mrs-modal-icon {
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 14px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    background: var(--primary);
+    font-size: 24px;
+    font-weight: 700;
+    position: relative;
+}
+.mrs-modal-icon.danger { background: var(--danger); }
+
+.mrs-modal-icon.result {
+    overflow: hidden;
+}
+
+.mrs-modal-icon.result .mrs-icon-spinner {
+    width: 22px;
+    height: 22px;
+    border: 3px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: mrsIconSpin 0.7s linear infinite;
+    box-sizing: border-box;
+}
+
+.mrs-modal-icon.result .mrs-icon-mark {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    opacity: 0;
+    transform: scale(0.4);
+    color: #fff;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.mrs-modal-icon.result.success { background: var(--primary); }
+.mrs-modal-icon.result.error { background: var(--danger); }
+
+.mrs-result-revealed .mrs-icon-spinner,
+.mrs-modal-icon.result.mrs-result-revealed .mrs-icon-spinner {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    animation: none;
+    visibility: hidden;
+}
+
+.mrs-result-revealed .mrs-icon-mark,
+.mrs-modal-icon.result.mrs-result-revealed .mrs-icon-mark {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition: opacity 0.25s ease 0.05s, transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2) 0.05s;
+}
+
+.mrs-result-revealed .mrs-icon-mark-path,
+.mrs-modal-icon.result.mrs-result-revealed .mrs-icon-mark-path {
+    stroke-dasharray: 40;
+    stroke-dashoffset: 40;
+    animation: mrsDrawMark 0.35s ease 0.1s forwards;
+}
+
+.mrs-result-revealed .mrs-icon-mark-path.x1,
+.mrs-result-revealed .mrs-icon-mark-path.x2,
+.mrs-modal-icon.result.mrs-result-revealed .mrs-icon-mark-path.x1,
+.mrs-modal-icon.result.mrs-result-revealed .mrs-icon-mark-path.x2 {
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    animation: mrsDrawMark 0.28s ease 0.1s forwards;
+}
+
+.mrs-result-revealed .mrs-icon-mark-path.x2,
+.mrs-modal-icon.result.mrs-result-revealed .mrs-icon-mark-path.x2 {
+    animation-delay: 0.22s;
+}
+
+@keyframes mrsIconSpin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes mrsDrawMark {
+    to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mrs-modal-icon.result .mrs-icon-spinner {
+        display: none;
+    }
+    .mrs-modal-icon.result .mrs-icon-mark {
+        opacity: 1;
+        transform: scale(1);
+    }
+    .mrs-modal-icon.result .mrs-icon-mark-path {
+        stroke-dashoffset: 0;
+        animation: none;
+    }
+}
+
+.mrs-modal-card h3 { margin-bottom: 8px; }
+.mrs-modal-card p { margin: 0; color: var(--text-muted); }
+.mrs-modal-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:22px; }
+.mrs-form-modal { text-align:left; width:min(100%, 460px); padding-bottom:0; }
+.mrs-form-modal h3 { text-align:center; margin-bottom:18px; }
+/*
+ * Footer ya fomu (Cancel / Confirm Booking) imefungwa kuwa sticky:
+ * hata fomu ikikuwa ndefu kuliko screen, kitufe hiki kinaonekana daima
+ * chini bila mtu kusogeza. Kinaenea hadi ukingo wa kadi (negative margin)
+ * na kinaBackground yake mwenyewe ili maudhui yasipite nyuma yake.
+ */
+.mrs-form-modal .mrs-modal-actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 3;
+    flex-wrap: wrap;
+    margin: 26px calc(var(--modal-pad, 28px) * -1) 0;
+    padding: 14px var(--modal-pad, 28px) var(--modal-pad, 28px);
+    background: var(--surface-alt);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 -12px 20px -14px rgba(31, 41, 55, .4);
+}
+
+.projector-picker {
+    margin-top: 14px !important;
+    margin-bottom: 0 !important;
+}
+
+.projector-picker label {
+    margin-bottom: 8px !important;
+}
+
+.projector-picker select {
+    margin-bottom: 0 !important;
+}
+
+.projector-hint {
+    display: block !important;
+    margin: 22px 0 8px !important;
+    padding: 14px 16px !important;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.7;
+    letter-spacing: 0.2px;
+    word-spacing: 2px;
+    background: var(--primary-lighter) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text) !important;
+    min-height: 1.5em;
+    box-sizing: border-box;
+    white-space: normal;
+}
+
+.projector-hint.is-ok {
+    background: var(--primary-lighter) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+}
+
+.projector-hint.is-warn {
+    background: var(--tint-danger-bg) !important;
+    border-color: var(--tint-danger-border) !important;
+    color: var(--tint-danger-fg) !important;
+}
+
+.projector-hint:empty {
+    display: none !important;
+}
+
+.booking-type-row {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.booking-type-option {
+    display: flex !important;
+    align-items: center;
+    gap: 7px;
+    font-weight: 400 !important;
+    font-size: 15px;
+    margin-bottom: 0 !important;
+    cursor: pointer;
+}
+
+.booking-type-option input {
+    width: auto !important;
+    margin-bottom: 0 !important;
+}
+
+.continuous-options {
+    margin: -4px 0 15px;
+    padding: 12px 14px;
+    background: var(--primary-lighter, #f3f4f6);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 8px;
+}
+
+.continuous-options label {
+    margin-bottom: 6px;
+}
+
+.continuous-options .date-dd {
+    margin-bottom: 10px;
+}
+
+.date-dd {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    align-items: stretch;
+}
+
+.date-dd select {
+    margin-bottom: 0 !important;
+    width: auto !important;
+    flex: 1;
+    min-width: 0;
+    padding: 10px 8px !important;
+    text-align: center;
+}
+
+.date-dd-day { max-width: 90px; flex: 0.8 !important; }
+.date-dd-month { max-width: 120px; flex: 1.2 !important; }
+.date-dd-year { max-width: 110px; flex: 1 !important; }
+
+.date-dd-store {
+    display: none !important;
+}
+
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 2px solid var(--border, #9ca3af) !important;
+    border-radius: 50% !important;
+    background: var(--surface-solid) !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    vertical-align: middle;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+input[type="radio"]:hover {
+    border-color: var(--primary-dark, #4b5563) !important;
+}
+
+input[type="radio"]:checked {
+    border-color: var(--primary-dark, #4b5563) !important;
+    background: radial-gradient(circle at center, var(--primary-dark, #4b5563) 0 45%, var(--surface-solid) 50%) !important;
+    box-shadow: 0 0 0 3px rgba(75, 85, 99, 0.15) !important;
+}
+
+input[type="radio"]:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.28) !important;
+}
+
+.weekday-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.weekday-option {
+    display: flex !important;
+    align-items: center;
+    gap: 5px;
+    font-weight: 400 !important;
+    font-size: 14px;
+    margin-bottom: 0 !important;
+    cursor: pointer;
+    padding: 5px 10px;
+    background: var(--surface-solid);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 6px;
+}
+
+.weekday-option:has(input:checked) {
+    border-color: var(--primary, #4b5563);
+    background: var(--tint-info-bg);
+    color: var(--tint-info-fg);
+    font-weight: 600;
+}
+
+.weekday-option input {
+    width: auto !important;
+    margin-bottom: 0 !important;
+}
+
+#continuous-start-slot {
+    margin-bottom: 4px;
+}
+
+.series-preview {
+    margin: 10px 0 0 !important;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.series-preview:empty {
+    display: none;
+}
+
+.series-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 8px;
+    margin-left: 6px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--tint-info-bg);
+    color: var(--tint-info-fg);
+    border: 1px solid var(--tint-info-border);
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.postpone-scope-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.postpone-scope-option {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400 !important;
+    margin-bottom: 0 !important;
+    cursor: pointer;
+}
+
+.postpone-scope-option input {
+    width: auto !important;
+    margin-bottom: 0 !important;
+}
+
+.btn-secondary { background: var(--primary-light); color: var(--text); border-color: var(--border); }
+.btn-secondary:hover { background: var(--border); border-color: var(--primary-mid); box-shadow:none; }
+body.modal-open { overflow:hidden; }
+@keyframes mrsModalFade { from { opacity:0; } to { opacity:1; } }
+@keyframes mrsModalUp { from { transform:translateY(12px) scale(.97); opacity:0; } to { transform:translateY(0) scale(1); opacity:1; } }
+.mrs-kebab { position:relative; display:inline-block; }
+.mrs-kebab-toggle { width:36px; height:36px; padding:0; border:1px solid var(--border); border-radius:50%; background: var(--surface); color:var(--text); font-size:22px; font-weight:700; line-height:1; cursor:pointer; }
+.mrs-kebab-toggle:hover { background:var(--primary-light); transform:translateY(-1px); }
+.mrs-kebab-menu {
+    position:absolute;
+    top:calc(100% + 8px);
+    right:0;
+    z-index:50;
+    display:none;
+    min-width:170px;
+    padding:6px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background: var(--surface-solid);
+    box-shadow:0 12px 28px rgba(31,41,55,.18);
+    transform-origin:top right;
+}
+.mrs-kebab-menu.open { display:block; animation:mrsKebabDrop .18s ease-out both; }
+.mrs-kebab-menu.mrs-kebab-menu-portal {
+    position:fixed;
+    top:auto;
+    right:auto;
+    z-index:1000;
+    max-height:calc(100vh - 16px);
+    overflow-y:auto;
+}
+@keyframes mrsKebabDrop {
+    from { opacity:0; transform:translateY(-8px) scale(.96); }
+    to { opacity:1; transform:translateY(0) scale(1); }
+}
+.mrs-kebab-menu a, .mrs-kebab-menu button { display:block; width:100%; padding:9px 11px; border:0; border-radius:7px; background:transparent; color:var(--text); text-align:left; text-decoration:none; cursor:pointer; font:inherit; font-weight:700; }
+.mrs-kebab-menu a:hover, .mrs-kebab-menu button:hover { background:var(--primary-lighter); }
+.mrs-kebab-menu .danger-item { color:var(--danger-dark); }
+@media (prefers-reduced-motion:reduce) {
+    .mrs-kebab-menu.open { animation:none; }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: transparent;
+    color: var(--text);
+}
+
+table th, table td {
+    padding: 10px;
+    border-bottom: 1px solid var(--line-soft);
+    border-right: 1px solid var(--line-soft);
+    text-align: left;
+    font-size: 15px;
+    vertical-align: top;
+}
+
+table th:last-child, table td:last-child {
+    border-right: none;
+}
+
+table th {
+    background: var(--thead-bg);
+    color: var(--text);
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+}
+
+table tr:nth-child(even) td {
+    background: var(--zebra-bg);
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 1.5;
+    background: var(--surface);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: var(--text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+form input::placeholder, form textarea::placeholder {
+    color: var(--text-faint);
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.2);
+    background: var(--surface-solid);
+}
+
+form select option {
+    color: var(--text);
+}
+
+/* ============================================================
+   READ-ONLY MODE — field zilizofungwa (mf. Mail Configuration)
+   Mtu anaweza kusoma tu; havibadiliki kimemorana.
+   ============================================================ */
+form input[readonly],
+form select:disabled,
+form input[type="checkbox"]:disabled {
+    background: var(--primary-lighter);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+form input[readonly]:focus,
+form select:disabled:focus {
+    border-color: var(--line-strong);
+    box-shadow: none;
+    background: var(--primary-lighter);
+}
+
+form select:disabled {
+    opacity: 0.9;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text);
+}
+
+.alert {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    border: 1px solid transparent;
+    line-height: 1.5;
+}
+
+.alert-error {
+    background: var(--tint-danger-bg);
+    color: var(--danger-dark);
+    border-color: var(--tint-danger-border);
+}
+
+.alert-success {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-color: var(--border);
+}
+
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    transition: box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.status-tag::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* Hover: chip inapaa juu kidogo + mwanga, na icon yake huanza "wiggle" */
+.status-tag:hover {
+    box-shadow: 0 0 8px currentColor;
+    transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------------------
+ * ICON za chips (SVG halisi — badala ya emoji)
+ * ------------------------------------------------------------------ */
+.chip-ico {
+    flex: none;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.status-tag:hover .chip-ico {
+    animation: chipWiggle 0.6s ease-in-out;
+}
+
+@keyframes chipWiggle {
+    0%   { transform: rotate(0deg)    scale(1); }
+    20%  { transform: rotate(-16deg)  scale(1.2); }
+    45%  { transform: rotate(14deg)   scale(1.25); }
+    70%  { transform: rotate(-8deg)   scale(1.15); }
+    100% { transform: rotate(0deg)    scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .status-tag,
+    .chip-ico { transition: none; }
+    .status-tag:hover { transform: none; }
+    .status-tag:hover .chip-ico { animation: none; }
+}
+
+.status-available { background: var(--primary-light); color: var(--primary-dark); border-color: var(--border); }
+.status-maintenance { background: var(--tint-danger-bg); color: var(--danger-dark); border-color: var(--tint-danger-border); }
+.status-postponed { background: var(--tint-warn-bg); color: var(--tint-warn-fg); border-color: var(--tint-warn-border); }
+.status-ongoing { background: var(--tint-gold-bg); color: var(--accent-dark); border-color: var(--accent); }
+
+.auth-page-bg {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, var(--grad-a) 0%, var(--grad-b) 45%, var(--grad-c) 100%);
+    padding: 20px;
+}
+
+.auth-box {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--line);
+    padding: 35px 30px;
+    border-radius: 16px;
+    color: var(--text);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    animation: fadeInUp 0.6s ease both;
+}
+
+.auth-box h2 {
+    color: var(--text);
+}
+
+.auth-box label {
+    color: var(--text);
+}
+
+.auth-box p {
+    color: var(--text);
+}
+
+.auth-box a {
+    color: var(--primary-dark);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.auth-box form input {
+    background: var(--surface-solid);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid var(--line-strong);
+    color: var(--text);
+    border-radius: 8px;
+}
+
+.auth-box form input::placeholder {
+    color: var(--text-faint);
+}
+
+.auth-box form input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.2);
+    background: var(--surface-solid);
+}
+
+.auth-box .btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--solid));
+    border: 1px solid var(--line);
+    font-weight: 700;              /* BOLD — radius inarithi .btn (999px pill) */
+    letter-spacing: 0.5px;
+}
+
+.auth-box .btn:hover {
+    box-shadow: 0 0 20px rgba(107, 114, 128, 0.35);
+}
+
+.today-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px 16px;
+    flex-wrap: wrap;
+    background: var(--surface-solid);
+}
+
+/* =====================================================================
+   ROTATING DARK-BLUE GLOW — box za meeting pekee (.room-grid .card)
+   - today-card HAINA glow kabisa (imeondolewa kwa ombi la mtumiaji).
+   - LIGHT mode (default): mwanga ni DARK BLUE (#0f172a / #1e293b —
+     rangi ya dark mode) badala ya gold ya zamani.
+   - DARK mode: gold inabaki (override chini) ili ionekane gizani —
+     dark-blue gizani haingeonekana.
+   - Mwanga unatoka NYUMA ya box (nje ya ukingo): ::before z-index:-1,
+     inset:-8px + blur(6px). Unaonekana uki-hover tu (opacity 0 -> 1).
+   Unazunguka (conic-gradient + @property --today-angle).
+   ===================================================================== */
+@property --today-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+/* Uso wa box za meeting uwe IMARA ili mwanga usipite ndani */
+.room-grid .card {
+    background: var(--surface-solid);
+}
+
+.room-grid .card::before {   /* mwanga: box za meeting pekee */
+    content: "";
+    position: absolute;
+    z-index: -1;              /* CHINI ya kadi — mwanga unatoka NYUMA */
+    inset: -8px;              /* umbo = kadi + 8px */
+    border-radius: 18px;      /* radius ya kadi (10px) + nafasi ya -8px */
+    pointer-events: none;
+    background: conic-gradient(from var(--today-angle),
+        transparent 0 57%,
+        rgba(15, 23, 42, .10) 66%,
+        rgba(15, 23, 42, .55) 73%,   /* dark blue — rangi ya dark mode */
+        rgba(30, 41, 59, .85) 78%,   /* kilele cha mwanga */
+        rgba(15, 23, 42, .55) 83%,
+        rgba(15, 23, 42, .15) 89%,
+        transparent 92%,
+        transparent 100%);
+    filter: blur(6px);        /* ukingo laini kila upande — hakuna edge */
+    animation: todayBorderSpin 3s linear infinite;
+}
+@keyframes todayBorderSpin {
+    to { --today-angle: 360deg }
+}
+
+/* =====================================================================
+   BOX ZA MEETING (.room-grid .card) — LIGHT: dark-blue glow uki-hover
+   - ::before = halo ya nje (dark blue, inazunguka 3s)
+   - ::after  = uso + shadow ya dark blue
+   ===================================================================== */
+.room-grid .card::before {
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+.room-grid .card:hover::before {
+    opacity: 1;
+}
+.room-grid .card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;              /* JUU ya halo (::before), CHINI ya maandishi */
+    inset: -1.5px;
+    border-radius: 10px;
+    background: var(--surface-solid);   /* uso IMARA — halo haupiti ndani */
+    pointer-events: none;
+    box-shadow: 0 0 0 rgba(15, 23, 42, 0);   /* moto: bila mwanga */
+    transition: box-shadow .25s ease;
+}
+.room-grid .card:hover::after {
+    box-shadow: 0 0 22px rgba(15, 23, 42, 0.35), 0 0 10px rgba(15, 23, 42, 0.25);
+}
+
+/* DARK mode: gold inabaki ili mwanga uonekane gizani */
+[data-theme="dark"] .room-grid .card::before {
+    background: conic-gradient(from var(--today-angle),
+        transparent 0 57%,
+        rgba(255, 200, 87, .12) 66%,
+        rgba(255, 200, 87, .65) 73%,
+        rgba(255, 234, 184, .90) 78%,
+        rgba(255, 200, 87, .65) 83%,
+        rgba(255, 200, 87, .18) 89%,
+        transparent 92%,
+        transparent 100%);
+}
+[data-theme="dark"] .room-grid .card:hover::after {
+    box-shadow: 0 0 22px rgba(107, 114, 128, 0.35), 0 0 10px rgba(107, 114, 128, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .room-grid .card::before { animation: none; }
+}
+
+/* Saa halisi (real-time clock) ndani ya box la tarehe */
+.live-clock {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 4px 13px;
+    border: 1px dashed var(--line-strong);
+    border-radius: 999px;
+    background: var(--surface);
+    font-family: Consolas, "Courier New", monospace;
+    font-variant-numeric: tabular-nums;   /* herufi zisizotikisana kila sekundi */
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-dark, #92400e);
+    line-height: 1.3;
+}
+
+.live-clock-time {
+    display: inline-block;
+    min-width: 8ch;
+    letter-spacing: 1.5px;
+}
+
+.live-clock-time.tick {
+    animation: clockTick 0.3s ease-out;
+}
+
+.live-clock-zone {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+}
+
+.clock-ico {
+    flex: none;
+}
+
+.today-card:hover .clock-ico {
+    animation: chipWiggle 0.6s ease-in-out;
+}
+
+@keyframes clockTick {
+    from {
+        transform: scale(1.14);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .live-clock-time.tick,
+    .today-card:hover .clock-ico {
+        animation: none;
+    }
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 42px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-45%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    padding: 4px;
+}
+
+.password-rules {
+    list-style: none;
+    margin: 8px 0 15px 0;
+    padding: 0;
+    font-size: 13px;
+}
+
+.password-rules li {
+    padding: 2px 0;
+    color: var(--text-dim);
+    transition: color 0.15s ease;
+}
+
+.password-rules li::before {
+    content: "";
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin-right: 6px;
+    vertical-align: -2px;
+    transition: transform 0.2s ease;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%239ca3af" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/></svg>') no-repeat center / contain;
+}
+
+.password-rules li.rule-met {
+    color: var(--success);
+}
+
+.password-rules li.rule-met::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%2316a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.4 2.7 2.7L16 9.6"/></svg>');
+    transition: transform 0.2s ease;
+}
+
+.password-rules li:hover::before {
+    transform: scale(1.25);
+}
+
+.brand-title {
+    text-align: center;
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 22px;
+    animation: fadeInUp 0.5s ease both;
+}
+.brand-title img {
+    display: block;
+    width: 86px;
+    height: 86px;
+    object-fit: contain;
+    margin: 0 auto 10px;
+    filter: drop-shadow(0 5px 9px rgba(31, 41, 55, .2));
+}
+.brand-title span {
+    display: block;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 25px 16px 30px;   /* gutter sawa na .container */
+    margin-top: 20px;
+    color: var(--text-muted);
+    font-size: 14px;
+    border-top: 1px solid var(--line);
+}
+
+/* Stat cards */
+/* Fomu ya filters (Reports): fields kushoto, Apply/Clear upande wa kulia */
+.report-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 0;
+}
+.report-filters-actions {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    margin-left: auto;   /* inasukuma Apply/Clear hadi ukingo wa kulia */
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+/* Reports: stats zote (9) ZIKE msitari mmoja kwenye PC/monitor kubwa.
+   Chini ya 1181px zinarudi auto-fit ya kawaida (simu/tablet). */
+@media (min-width: 1181px) {
+    .stat-grid-row9 {
+        grid-template-columns: repeat(9, minmax(0, 1fr));
+        gap: 10px;
+    }
+}
+.stat-card {
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid var(--line-soft);
+    border-radius: 12px;
+    padding: 16px 14px;
+    text-align: center;
+    transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    animation: fadeInUp .45s ease both;
+}
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(31,41,55,.12);
+    border-color: var(--line-strong);
+}
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    line-height: 1.15;
+}
+.stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+.stat-ok .stat-value { color: var(--success-strong); }
+.stat-warn .stat-value { color: var(--warn-strong); }
+.stat-danger .stat-value { color: var(--danger-dark); }
+.stat-accent { border-color: var(--stat-accent-border); background: var(--stat-accent-bg); }
+.stat-accent .stat-value { color: var(--accent-dark); }
+
+/* Audit action tag */
+.status-tag.audit-action {
+    background: var(--primary-lighter);
+    color: var(--primary-dark);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .3px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+/* Monthly trend bars */
+.trend-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    height: 180px;
+    padding-top: 8px;
+}
+.trend-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    min-width: 0;
+}
+.trend-count {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 4px;
+}
+.trend-bar {
+    width: 100%;
+    max-width: 42px;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 6px 6px 0 0;
+    min-height: 4px;
+    transition: height .3s ease;
+}
+.trend-col:hover .trend-bar {
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-dark) 100%);
+}
+.trend-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-top: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+@media (max-width:700px) {
+    .trend-bars { gap: 5px; height: 150px; }
+    .trend-label { font-size: 9px; }
+    .trend-count { font-size: 10px; }
+    .stat-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+    .stat-value { font-size: 22px; }
+}
+
+.site-footer .footer-title {
+    color: var(--accent-dark);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        position: relative;
+    }
+    .menu-toggle {
+        display: flex;
+        margin-left: auto;   /* ☰ na switch ya theme viwe upande wa kulia (simu) */
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 8px;
+        padding-top: 10px;
+    }
+    .nav-links.open {
+        display: flex;
+    }
+    .nav-pill,
+    .nav-logout {
+        width: 100%;
+        justify-content: flex-start;
+        margin: 0 !important;
+        padding: 11px 14px !important;
+    }
+    .nav-logout {
+        margin-top: 4px !important;
+    }
+    .nav-dropdown-menu {
+        position: static;
+        display: none;
+        min-width: 0;
+        box-shadow: none;
+        background: var(--stripe-bg);
+        border: 0;
+        margin-top: 6px;
+        animation: none;
+    }
+    .nav-dropdown.open .nav-dropdown-menu {
+        display: flex;
+    }
+    .auth-box {
+        margin: 30px auto;
+        padding: 20px;
+    }
+    .room-grid {
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+    }
+    .room-grid > .card {
+        width:100%;
+        box-sizing:border-box;
+        align-self:stretch;
+        animation:none;
+        transform:none;
+    }
+    .room-grid .card:hover {
+        transform:none;
+        top:0;   /* simu: hakuna lift (top ndio lift mpya badala ya transform) */
+    }
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* --- Modal: inafaa kila screen (kubwa, kati, simu) --- */
+    .mrs-modal-overlay {
+        --modal-outer-y: 8px;
+        --modal-outer-x: 8px;
+        padding: var(--modal-outer-y) var(--modal-outer-x);
+    }
+    .mrs-modal-card {
+        --modal-pad: 16px;
+        width: 100%;
+        border-radius: 14px;
+    }
+    .mrs-form-modal .mrs-modal-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    /* Kitufe kimoja = upana wa yote (Cancel / Confirm Booking) */
+    .mrs-modal-actions .btn {
+        width: 100%;
+        text-align: center;
+        white-space: normal;
+    }
+    .mrs-modal-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* Kitufe cha "Book This Room" kwenye kadi ya chumba --- */
+    .mrs-book-room {
+        display: block;
+        width: 100%;
+        text-align: center;
+        white-space: normal;
+    }
+}
+
+/* =====================================================================
+   Kipengele kipya: ukurasa wa thibitisho ya email (verification)
+   ===================================================================== */
+.auth-sub {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+    opacity: 0.88;
+    margin-bottom: 16px;
+}
+
+.auth-sub strong {
+    word-break: break-all;
+}
+
+.verify-code {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 12px;
+    line-height: 1.4;
+    /* compensation for the trailing letter-spacing */
+    padding: 14px 10px 14px 24px;
+}
+
+.dev-code-box {
+    background: var(--tint-orange-bg);
+    border: 1px dashed #f59e0b;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--tint-warn-fg);
+}
+
+.dev-code-value {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: var(--tint-orange-fg);
+    font-family: ui-monospace, "Courier New", monospace;
+}
+
+.resend-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    font-size: 14px;
+}
+
+.resend-row form {
+    margin: 0;
+}
+
+.link-btn {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--primary-dark);
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.link-btn:hover {
+    opacity: 0.75;
+}
+
+.auth-note {
+    background: var(--banner-bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.auth-note a {
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+
+.field-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+/* Hali mpya ya watumiaji: "pending" = hajathibitisha email */
+.status-pending {
+    background: var(--tint-warn-bg);
+    color: var(--tint-warn-fg);
+    border-color: #fcd34d;
+}
+
+
+/* =====================================================================
+   BUTTON ICONS (SVG) + ANIMATION
+   Kila button ya mfumo ina icon ya kazi yake (imeongezwa na icons.js)
+   ===================================================================== */
+.btn,
+.link-btn,
+.password-toggle,
+.mrs-kebab-toggle,
+.mrs-kebab-menu a,
+.mrs-kebab-menu button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* --- Icon ya SVG ndani ya button --- */
+.mrs-btn-icon {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 auto;
+    overflow: visible;
+    transition: transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.35);
+    /* `backwards` (si `both`) ili animation ya kuingia isizuie hover transform */
+    animation: mrsIconPop 0.4s cubic-bezier(0.2, 1.5, 0.4, 1) backwards;
+}
+@keyframes mrsIconPop {
+    from { opacity: 0; transform: scale(0.2) rotate(-40deg); }
+    to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.btn { position: relative; overflow: hidden; animation: mrsBtnIn 0.45s ease backwards; }
+@keyframes mrsBtnIn {
+    from { opacity: 0; transform: translateY(7px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Mwanga unaosafiri (sheen) wakati wa hover */
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -70%;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-18deg);
+    pointer-events: none;
+    transition: left 0.55s ease;
+}
+.btn:hover::after { left: 135%; }
+
+/* Hover / active / focus kwa button zote
+   (transform ya hover sasa iko ndani ya .btn:hover hapo juu — rule moja) */
+.btn:hover .mrs-btn-icon { transform: scale(1.12) translateY(-1px); }   /* kama .nav-pill:hover .nav-icon */
+.btn:active { transform: translateY(0) scale(0.96); }
+.btn:active .mrs-btn-icon { transform: scale(0.88); }
+.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.38), 0 6px 16px rgba(31, 41, 55, 0.18);
+}
+.btn .mrs-btn-icon { width: 18px; height: 18px; }
+
+/* --- Kebab menu (⋮) na vitufe vyake --- */
+.mrs-kebab-toggle .mrs-btn-icon { width: 18px; height: 18px; }
+.mrs-kebab-toggle:hover .mrs-btn-icon { transform: rotate(90deg) scale(1.15); }
+.mrs-kebab-menu a,
+.mrs-kebab-menu button { justify-content: flex-start; gap: 9px; }
+.mrs-kebab-menu .mrs-btn-icon { width: 15px; height: 15px; }
+.mrs-kebab-menu a:hover .mrs-btn-icon,
+.mrs-kebab-menu button:hover .mrs-btn-icon { transform: translateX(3px) scale(1.1); }
+.mrs-kebab-menu .danger-item .mrs-btn-icon { color: var(--danger); }
+
+/* --- Link button (mf. "Resend code") --- */
+.link-btn { gap: 5px; }
+.link-btn .mrs-btn-icon { width: 15px; height: 15px; }
+.link-btn:hover .mrs-btn-icon { transform: translateX(3px) rotate(15deg); }
+
+/* --- Onyesha/Ficha nenosiri (Show / Hide) --- */
+.password-wrapper input { padding-right: 66px; }
+.password-toggle { gap: 5px; transition: color 0.2s ease, transform 0.2s ease; }
+.password-toggle .mrs-btn-icon { width: 16px; height: 16px; }
+.password-toggle:hover { color: var(--text); transform: scale(1.06); }
+
+/* --- Nav pills tayari zina icons zake; hapa ni animation tu --- */
+.nav-pill .nav-icon,
+.nav-logout .nav-icon { transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.4); }
+.nav-pill:hover .nav-icon { transform: scale(1.15) rotate(-6deg); }
+.nav-logout:hover .nav-icon { transform: translateX(3px); }
+.nav-chevron { transition: transform 0.25s ease; }
+.nav-dropdown-btn[aria-expanded="true"] .nav-chevron { transform: rotate(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+    .btn,
+    .mrs-btn-icon { animation: none !important; }
+    .btn::after { display: none; }
+    .btn:hover { transform: none; }
+}
+
+/* =====================================================================
+   Jadwali zote ndani ya box yake (scroll ya ndani — si ya ukurasa)
+   Imeingizwa kwenye <div class="table-scroll"> kwenye kila ukurasa.
+   ===================================================================== */
+.table-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;             /* jadwali ndefu inasogea ndani ya kadi */
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: transparent;
+    /* onyo kwa mtumiaji kujua jadwali inaendelea upande wa kulia */
+    scrollbar-color: var(--primary-mid, #9ca3af) transparent;
+}
+.table-scroll::-webkit-scrollbar { height: 10px; }
+.table-scroll::-webkit-scrollbar-track { background: var(--track-bg); border-radius: 8px; }
+.table-scroll::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 8px; border: 2px solid transparent; background-clip: content-box; }
+.table-scroll::-webkit-scrollbar-thumb:hover { background: var(--primary-mid, #9ca3af); background-clip: content-box; }
+
+.table-scroll > table {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+}
+
+/* =====================================================================
+   DARK / LIGHT MODE
+   - Switch ya DUARA (round) yenye ikoni SVG: sun (dark) / moon (light)
+   - Kurasa za auth: HAKUNA switch ya nje — coat of arms ndiyo kibonyezo,
+     na dark mode inaongeza WHITE GLOW kwenye ukingo wake ili ionekane.
+   - Badiliko la rangi: transition POLE POLE laini (0.6s) inayoingia tu
+     wakati wa kubadilisha (html.theme-anim) — hover za kawaida hubaki
+     papo hapo baada ya sekunde <1.
+   ===================================================================== */
+
+/* --- 1. Transition ya mode mpya (gradient ya background pia) --- */
+html.theme-anim,
+html.theme-anim body {
+    transition: --grad-a 0.6s ease, --grad-b 0.6s ease, --grad-c 0.6s ease !important;
+}
+
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after {
+    transition: background-color 0.6s ease,
+                border-color 0.6s ease,
+                color 0.6s ease,
+                fill 0.6s ease,
+                stroke 0.6s ease,
+                box-shadow 0.6s ease,
+                outline-color 0.6s ease !important;
+}
+
+/* --- 2. Switch ya duara (navbar — upande wa kulia wa Log Out) --- */
+.theme-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    padding: 0;
+    border-radius: 50%;                 /* ROUND design */
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s ease, box-shadow 0.25s ease,
+                background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    animation: mrsBtnIn 0.45s ease backwards;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    color: var(--accent-dark);
+    box-shadow: 0 6px 16px rgba(31, 41, 55, 0.18);
+    animation: chipWiggle 0.6s ease-in-out;
+}
+
+.theme-toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 200, 87, 0.5);
+}
+
+.theme-toggle svg {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 19px;
+    height: 19px;
+    /* kubadilishana ikoni: rotate + fade (pole pole) */
+    transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+/* LIGHT mode: moon inaonekana (onyo: "bonyeza uende dark mode") */
+.theme-toggle .ico-sun  { opacity: 0; transform: rotate(-80deg) scale(0.4); }
+.theme-toggle .ico-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+
+/* DARK mode: sun inaonekana (onyo: "bonyeza uende light mode") */
+[data-theme="dark"] .theme-toggle .ico-sun  { opacity: 1; transform: rotate(0deg) scale(1); }
+[data-theme="dark"] .theme-toggle .ico-moon { opacity: 0; transform: rotate(80deg) scale(0.4); }
+
+/* --- 3. Coat of arms kwenye auth = kibonyezo cha dark/light --- */
+.brand-title .auth-crest {
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.25s ease, filter 0.35s ease;
+}
+
+.brand-title .auth-crest:hover {
+    transform: scale(1.07);
+    animation: chipWiggle 0.6s ease-in-out;
+}
+
+.brand-title .auth-crest:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 12px;
+}
+
+/* DARK MODE: WHITE GLOW kwenye ukingo wa logo — ionekane bila kuchanganyika */
+[data-theme="dark"] .brand-title .auth-crest {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
+            drop-shadow(0 0 12px rgba(255, 255, 255, 0.55))
+            drop-shadow(0 3px 12px rgba(255, 255, 255, 0.3));
+}
+
+[data-theme="dark"] .brand-title .auth-crest:hover {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 1))
+            drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+}
+
+/* DARK MODE: LOGO YA NAVBAR (menu bar) — white glow SAWA na ya kurasa za auth,
+   ili coat of arms ndani ya menu bar ionekane gizani bila kuchanganyika */
+[data-theme="dark"] .navbar-brand img {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
+            drop-shadow(0 0 12px rgba(255, 255, 255, 0.55))
+            drop-shadow(0 3px 12px rgba(255, 255, 255, 0.3));
+}
+
+[data-theme="dark"] .navbar-brand img:hover {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 1))
+            drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+}
+
+/* DARK MODE: LOGO YA LOADING SPINNER (coat of arms ndani ya loader) —
+   white glow SAWA na auth-crest na navbar, ili ionekane gizani */
+[data-theme="dark"] .mrs-loader-logo {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
+            drop-shadow(0 0 12px rgba(255, 255, 255, 0.55))
+            drop-shadow(0 3px 12px rgba(255, 255, 255, 0.3));
+}
+
+/* --- 4. Wanaozuiya motion --- */
+@media (prefers-reduced-motion: reduce) {
+    html.theme-anim,
+    html.theme-anim body,
+    html.theme-anim *,
+    html.theme-anim *::before,
+    html.theme-anim *::after {
+        transition: none !important;
+    }
+    .theme-toggle,
+    .theme-toggle svg,
+    .brand-title .auth-crest {
+        transition: none;
+        animation: none;
+    }
+    .theme-toggle:hover { transform: none; }
+}
+
+/* ------------------------------------------------------------------
+   PROFILE CARD + KEBAB (kulia juu)
+   - Muundo sawa na mrs-kebab ya tables (admin.php n.k.)
+   - Kebab inakaa kulia kabisa, info kushoto
+   ------------------------------------------------------------------ */
+.profile-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+.profile-card-head .profile-info {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.profile-card-head .profile-info p {
+    margin-bottom: 6px;
+}
+.profile-card-head .profile-info p:last-child {
+    margin-bottom: 0;
+}
+.profile-card-head .mrs-kebab {
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+/* ------------------------------------------------------------------
+   CONTINUOUS CALENDAR (mfano wa picha: From/To, siku 1 tu)
+   - Input inaonyesha DD/MM/YYYY, popup nyeupe na grid ya siku
+   - Siku zinazofaa (Mon-Fri iliyochaguliwa): nyeusi, clickable
+   - Zisizofaa / za mwezi mwingine / zilizopita: kijivu, disabled
+   - Iliyochaguliwa: duara la bluu kama mfano
+   ------------------------------------------------------------------ */
+.mrs-cal-wrap {
+    position: relative;
+    margin-bottom: 15px;
+}
+.mrs-cal-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    font-size: 15px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+}
+.mrs-cal-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.2);
+    background: var(--surface-solid);
+}
+.mrs-cal-popup {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: min(100%, 340px);
+    min-width: 280px;
+    background: var(--surface-solid);
+    border: 1px solid var(--line-soft);
+    border-radius: 12px;
+    box-shadow: 0 18px 44px rgba(31, 41, 55, 0.22);
+    padding: 12px 12px 14px;
+    z-index: 60;
+}
+.mrs-cal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+.mrs-cal-nav {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    padding: 0 0 2px;
+    cursor: pointer;
+}
+.mrs-cal-nav:hover {
+    background: var(--primary-lighter);
+}
+.mrs-cal-title {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    font-size: 22px;
+    font-weight: 500;
+    min-width: 0;
+}
+.mrs-cal-month {
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 22px;
+    color: var(--text);
+    cursor: pointer;
+    max-width: 150px;
+    padding: 0;
+}
+.mrs-cal-year {
+    font: inherit;
+    font-size: 22px;
+    color: var(--text);
+    white-space: nowrap;
+}
+.mrs-cal-dow {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+}
+.mrs-cal-dow span {
+    padding: 4px 0;
+}
+.mrs-cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    justify-items: center;
+}
+.mrs-cal-day {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text);
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    display: grid;
+    place-items: center;
+}
+.mrs-cal-day:not(:disabled):hover {
+    background: var(--primary-lighter);
+}
+.mrs-cal-day:disabled {
+    color: var(--text-faint);
+    cursor: default;
+    opacity: 0.55;
+}
+.mrs-cal-day.is-other {
+    opacity: 0.4;
+}
+.mrs-cal-day.is-selected {
+    background: #5b9cf6;
+    color: #fff;
+    font-weight: 700;
+}
+.mrs-cal-hint {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+/* ------------------------------------------------------------------
+   ROOM COLUMNS — kila chumba: room card (juu, compact) + upcoming box
+   (chini yake moja kwa moja). Mobile: A, box-A, B, box-B...
+   Desktop: safu 3, kila safu na box yake chini ya card yake.
+   ------------------------------------------------------------------ */
+.room-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+.room-col .card {
+    margin-bottom: 0;
+}
+.upcoming-card {
+    padding: 16px 18px;
+}
+.upcoming-title {
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.upcoming-count {
+    display: inline-grid;
+    place-items: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 7px;
+    border-radius: 999px;
+    background: var(--primary-light);
+    border: 1px solid var(--border);
+    color: var(--primary-dark);
+    font-size: 12px;
+    font-weight: 700;
+}
+.upcoming-list {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    max-height: 182px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    font-size: 13.5px;
+}
+.upcoming-list li {
+    padding: 7px 2px;
+    border-bottom: 1px solid var(--line-soft);
+}
+.upcoming-list li:last-child {
+    border-bottom: 0;
+}
+.upcoming-list .up-day {
+    font-weight: 700;
+}
+
+/* ------------------------------------------------------------------
+   ROLES & PERMISSIONS MATRIX (admin_roles.php)
+   ------------------------------------------------------------------ */
+.perm-lock-note {
+    color: var(--text-muted);
+    font-size: 13px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.perm-lock-ico {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    color: var(--primary);
+    transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+}
+.perm-lock-note:hover .perm-lock-ico {
+    animation: perm-lock-shake 0.7s ease-in-out;
+}
+@keyframes perm-lock-shake {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    20%      { transform: rotate(-14deg) scale(1.15); }
+    40%      { transform: rotate(12deg) scale(1.15); }
+    60%      { transform: rotate(-8deg) scale(1.1); }
+    80%      { transform: rotate(5deg) scale(1.05); }
+}
+.perm-scroll {
+    max-height: 72vh;
+    overflow-y: auto;              /* ishindwe na overflow-y:hidden ya .table-scroll */
+    overflow-x: auto;
+}
+.perm-scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.perm-scroll::-webkit-scrollbar-track { background: var(--track-bg); border-radius: 8px; }
+.perm-scroll::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
+    border: 2px solid transparent;
+    background-clip: content-box;
+    border-radius: 8px;
+}
+.perm-scroll::-webkit-scrollbar-thumb:hover { background: var(--primary-mid, #9ca3af); }
+.perm-table {
+    min-width: 860px;
+    border-collapse: collapse;
+}
+.perm-table th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--surface-solid, var(--surface));
+}
+.perm-table th.perm-sn {
+    width: 44px;
+    text-align: center;
+}
+.perm-table td.perm-sn {
+    text-align: center;
+    font-weight: 700;
+    font-size: 13px;
+}
+.perm-mod {
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+.perm-sub {
+    font-weight: 700;
+    font-size: 13px;
+}
+.perm-activity {
+    min-width: 300px;
+    font-size: 13.5px;
+}
+th.perm-activity {
+    min-width: 0;
+}
+.perm-role-col {
+    width: 92px;
+    text-align: center;
+    padding: 6px 8px !important;
+}
+.perm-col-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+}
+.perm-role-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+}
+.perm-col-head:hover .perm-role-icon {
+    transform: scale(1.15) rotate(-6deg);
+}
+/* Admin column = READ-ONLY (imefungwa): hakuna toggle, cursor ya kawaida */
+.perm-col-locked {
+    cursor: default;
+}
+.perm-col-locked:hover .perm-role-icon {
+    transform: none;
+}
+.perm-col-lock {
+    margin-left: 0;
+    color: var(--primary);
+    opacity: 0.9;
+}
+.perm-cell {
+    text-align: center;
+    padding: 8px 6px !important;
+}
+.perm-check {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--primary);
+    cursor: pointer;
+    vertical-align: middle;
+}
+.perm-check:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+.perm-lock {
+    width: 13px;
+    height: 13px;
+    vertical-align: -2px;
+    margin-left: 3px;
+    opacity: 0.65;
+}
+.perm-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 14px;
+}
+.perm-note {
+    display: inline-block;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+}
+.perm-hint {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+/* Rangi za module (kama ile spreadsheet) — zinafaa dark na light */
+table tr td.perm-tint-1 { background: rgba(99, 102, 241, 0.10); }
+table tr td.perm-tint-2 { background: rgba(14, 165, 233, 0.10); }
+table tr td.perm-tint-3 { background: rgba(16, 185, 129, 0.10); }
+table tr td.perm-tint-4 { background: rgba(245, 158, 11, 0.10); }
+table tr td.perm-tint-5 { background: rgba(236, 72, 153, 0.10); }
+table tr td.perm-tint-6 { background: rgba(139, 92, 246, 0.10); }
+table tr td.perm-tint-7 { background: rgba(244, 63, 94, 0.10); }
+table tr td.perm-tint-8 { background: rgba(20, 184, 166, 0.10); }
+table tr td.perm-tint-9 { background: rgba(59, 130, 246, 0.10); }
+@media (max-width: 720px) {
+    .perm-footer { flex-direction: column; align-items: stretch; }
+    .perm-footer .btn { width: 100%; }
+}
+
+/* =========================================================
+   ADMIN HUB (admin.php) — kadi ya karibu + grid ya vibox
+   3 vibox kwenye kila row (desktop), 2 (<=900px), 1 (<=700px);
+   box ya mwisho pekee (box MOJA kwenye row) iwe KATIKATI.
+   ========================================================= */
+/* =========================================================
+   WELCOME CARD (admin.php) — kubwa, gradient, role badge,
+   stats 4 za live (DB), footer note
+   ========================================================= */
+.admin-welcome {
+    position: relative;
+    overflow: hidden;
+    padding: 26px 28px;
+    margin-bottom: 24px;
+}
+.admin-welcome::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(85% 130% at 0% 0%, var(--tint-info-bg) 0%, transparent 62%),
+        radial-gradient(65% 110% at 100% 100%, var(--tint-gold-bg) 0%, transparent 68%);
+    pointer-events: none;
+}
+.admin-welcome > * { position: relative; }
+.admin-welcome h2 { margin: 0; font-size: 27px; line-height: 1.25; }
+.admin-welcome p { margin: 0; }
+.aw-top { display: flex; align-items: flex-start; gap: 16px; }
+.admin-welcome-icon {
+    flex: 0 0 auto;
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    color: var(--tint-info-fg);
+}
+.admin-welcome-icon svg { width: 32px; height: 32px; }
+.aw-body { flex: 1 1 auto; min-width: 0; }
+.aw-title { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; }
+.aw-lead { margin: 8px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--text-muted); max-width: 860px; }
+.aw-tip { margin: 5px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--text-muted); max-width: 860px; }
+.aw-badge {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.aw-badge-role { display: block; }
+.aw-badge-note { display: block; font-size: 10.5px; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.aw-badge--admin { background: var(--tint-info-bg); color: var(--tint-info-fg); }
+.aw-badge--staff { background: var(--tint-gold-bg); color: var(--accent-dark); }
+.aw-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+}
+.aw-stat { border-radius: 14px; padding: 14px 16px; }
+.aw-stat strong { display: block; font-size: 28px; line-height: 1.1; font-weight: 700; }
+.aw-stat-name { display: block; margin-top: 4px; font-size: 13.5px; font-weight: 600; color: var(--text); }
+.aw-stat-desc { display: block; margin-top: 4px; font-size: 12px; line-height: 1.5; color: var(--text-muted); }
+.aw-stat--info { background: var(--tint-info-bg); }
+.aw-stat--info strong { color: var(--tint-info-fg); }
+.aw-stat--ok { background: var(--tint-ok-bg); }
+.aw-stat--ok strong { color: var(--tint-ok-fg); }
+.aw-stat--gold { background: var(--tint-gold-bg); }
+.aw-stat--gold strong { color: var(--accent-dark); }
+.aw-stat--danger { background: var(--tint-danger-bg); }
+.aw-stat--danger strong { color: var(--tint-danger-fg); }
+.aw-foot { margin-top: 16px; font-size: 12px; color: var(--text-muted); }
+
+.admin-hub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.admin-hub-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    min-height: 210px;
+    padding: 30px 20px;
+    margin-bottom: 0;          /* grid hushika margin — gap ndiyo inayotenganisha */
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.admin-hub-card .admin-hub-icon {
+    width: 62px;
+    height: 62px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 14px;
+    color: var(--tint-info-fg);
+}
+.admin-hub-card .admin-hub-icon svg { width: 32px; height: 32px; }
+.admin-hub-card h3 { margin: 0 0 8px; font-size: 18px; }
+.admin-hub-card p { margin: 0; font-size: 13.5px; color: var(--text-muted); }
+.admin-hub-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+}
+/* Row ya mwisho yenye box MOJA pekee => katikati (desktop, 3/row) */
+.admin-hub-grid > *:nth-child(3n+1):last-child {
+    grid-column: 1 / -1;
+    width: calc((100% - 48px) / 3);
+    justify-self: center;
+}
+@media (max-width: 900px) {
+    .admin-hub-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .aw-stats { grid-template-columns: repeat(2, 1fr); }
+    /* futa kanuni ya desktop (3n+1), kisha weka kanuni ya 2/row */
+    .admin-hub-grid > *:nth-child(3n+1):last-child {
+        grid-column: auto;
+        width: auto;
+        justify-self: auto;
+    }
+    .admin-hub-grid > *:nth-child(2n+1):last-child {
+        grid-column: 1 / -1;
+        width: calc((100% - 20px) / 2);
+        justify-self: center;
+    }
+}
+@media (max-width: 700px) {
+    .admin-hub-grid { grid-template-columns: 1fr; gap: 16px; }
+    .admin-hub-grid > *:nth-child(3n+1):last-child,
+    .admin-hub-grid > *:nth-child(2n+1):last-child {
+        grid-column: auto;
+        width: auto;
+        justify-self: auto;
+    }
+    .admin-welcome { padding: 20px; }
+    .aw-top { flex-direction: column; gap: 12px; }
+    .admin-welcome h2 { font-size: 22px; }
+}
+@media (max-width: 480px) {
+    .admin-welcome { padding: 18px 16px; }
+    .aw-stats { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   HUB ICON ANIMATIONS — kila iconi na animation yake TOFAUTI
+   (slugs: rcp, users, projectors, reports, mail, audit, roles)
+   ========================================================= */
+@keyframes mrsIcoFloat {           /* nyumba — inapanda/shuka */
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+}
+@keyframes mrsIcoPulse {           /* watu — mapigo ya moyo */
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+@keyframes mrsIcoSwing {           /* projector — inatundika kusonga */
+    0%, 100% { transform: rotate(-7deg); }
+    50% { transform: rotate(7deg); }
+}
+@keyframes mrsIcoBounce {          /* baa — ruka chini-topu */
+    0%, 100% { transform: translateY(0); }
+    45% { transform: translateY(-11px); }
+    65% { transform: translateY(-3px); }
+    85% { transform: translateY(-5px); }
+}
+@keyframes mrsIcoShake {           /* barua — inatetemeka kando */
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+@keyframes mrsIcoPeek {            /* daftari — inatokeza juu */
+    0%, 100% { transform: translateY(9px); opacity: 0.45; }
+    45% { transform: translateY(-5px); opacity: 1; }
+    70% { transform: translateY(0); opacity: 1; }
+}
+@keyframes mrsIcoWiggle {          /* funguo — inageuka kufungua */
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-12deg); }
+    75% { transform: rotate(12deg); }
+}
+@keyframes mrsIcoGlow {            /* welcome shield — inapumua */
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+}
+.admin-welcome-icon { animation: mrsIcoGlow 3s ease-in-out infinite; }
+.admin-hub-card.hub-ico-rcp .admin-hub-icon { animation: mrsIcoFloat 3.2s ease-in-out infinite; }
+.admin-hub-card.hub-ico-users .admin-hub-icon { animation: mrsIcoPulse 2.4s ease-in-out infinite; }
+.admin-hub-card.hub-ico-projectors .admin-hub-icon {
+    animation: mrsIcoSwing 3.6s ease-in-out infinite;
+    transform-origin: top center;
+}
+.admin-hub-card.hub-ico-reports .admin-hub-icon { animation: mrsIcoBounce 1.9s ease-in-out infinite; }
+.admin-hub-card.hub-ico-mail .admin-hub-icon { animation: mrsIcoShake 2.1s ease-in-out infinite; }
+.admin-hub-card.hub-ico-audit .admin-hub-icon { animation: mrsIcoPeek 3.4s ease-in-out infinite; }
+.admin-hub-card.hub-ico-roles .admin-hub-icon { animation: mrsIcoWiggle 1.7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+    .admin-welcome-icon,
+    .admin-hub-card .admin-hub-icon { animation: none; }
+}
+
+/* ===== RATIBA YA CHUMBA — kalenda ya mwezi (Sprint 4) ===== */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.ratiba-head {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    align-items: flex-end; justify-content: space-between;
+    margin-bottom: 14px;
+}
+.ratiba-sub { margin: 4px 0 0; color: var(--text-muted); font-size: 15px; }
+.ratiba-room-filter select {
+    padding: 9px 12px; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--surface-solid); color: var(--text); font-size: 14.5px;
+    min-width: 220px; cursor: pointer;
+}
+.ratiba-toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.ratiba-legend {
+    display: flex; gap: 18px; flex-wrap: wrap;
+    margin-bottom: 12px; font-size: 13.5px; color: var(--text-muted);
+}
+.ratiba-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.legend-dot.is-confirmed { background: var(--success); }
+.legend-dot.is-postponed { background: var(--tint-warn-fg); }
+.legend-dot.is-today { background: var(--accent, #2563eb); }
+.ratiba-empty { color: var(--text-muted); font-style: italic; margin-top: 14px; }
+.mrs-cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+}
+.mrs-cal-head {
+    text-align: center; font-size: 12.5px; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase;
+    color: var(--text-muted); padding: 6px 0;
+}
+.mrs-cal-cell {
+    min-height: 108px; padding: 7px 7px 9px;
+    background: var(--surface-solid);
+    border: 1px solid var(--border); border-radius: 10px;
+    display: flex; flex-direction: column; gap: 5px;
+}
+.mrs-cal-cell.is-empty {
+    background: transparent; border-color: transparent;
+}
+.mrs-cal-cell.is-today {
+    border-color: var(--accent, #2563eb);
+    box-shadow: 0 0 0 1px var(--accent, #2563eb) inset;
+}
+.cal-daynum {
+    font-size: 13px; font-weight: 700; color: var(--text-muted);
+    align-self: flex-start;
+}
+.mrs-cal-cell.is-today .cal-daynum {
+    background: var(--accent, #2563eb); color: #fff;
+    border-radius: 50%; width: 22px; height: 22px;
+    display: inline-flex; align-items: center; justify-content: center;
+}
+.cal-event {
+    font-size: 12px; line-height: 1.35; padding: 4px 6px;
+    border-radius: 7px; border-left: 3px solid transparent;
+    overflow: hidden; text-overflow: ellipsis;
+}
+.cal-event.is-confirmed { background: var(--tint-ok-bg); border-left-color: var(--success); color: var(--tint-ok-fg); }
+.cal-event.is-postponed { background: var(--tint-warn-bg); border-left-color: var(--tint-warn-fg); color: var(--tint-warn-fg); }
+.cal-time { font-weight: 700; margin-right: 4px; font-variant-numeric: tabular-nums; }
+.cal-title { font-weight: 600; }
+.cal-room { display: block; font-size: 11px; opacity: .85; }
+@media (max-width: 820px) {
+    .mrs-cal-cell { min-height: 74px; padding: 5px; }
+    .cal-event { font-size: 11px; padding: 3px 5px; }
+    .cal-room { display: none; }
+    .ratiba-room-filter select { min-width: 170px; }
+}

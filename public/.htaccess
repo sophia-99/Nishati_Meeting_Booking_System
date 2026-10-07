@@ -1,0 +1,15 @@
+# MRS - usalama wa webroot (Sprint 1 #3)
+# Faili zifuatazo HAZIPASWI kuvuliwa kwa HTTP hata kama zipo kwenye www root
+
+<FilesMatch "(?i)\.(sql|md|log|bak|old|orig|ini|env|sh|git)$">
+    Require all denied
+</FilesMatch>
+
+# Usionyeshe orodha ya folda
+Options -Indexes
+
+# Hakuna HTTP moja kwa moja kwenye includes/ (kila faili hapa ina direct-access guard pia)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
